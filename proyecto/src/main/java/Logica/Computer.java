@@ -310,8 +310,6 @@ public class Computer {
         this.inputWait = inputWait;
     }
     
-    
-    
     public void keyboardEnter(String entrada){
         if(waitProcess.size()!=0){
             this.inputWait = true;

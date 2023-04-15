@@ -8,6 +8,7 @@ import java.awt.Color;
 import Logica.Computer;
 import Logica.Memory;
 import Logica.Process;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -74,7 +75,7 @@ public class Principal extends javax.swing.JFrame {
         for (int i=0; i<processList.size();i++){
             Process temp = processList.get(i);
             Object[] objectData = new Object[] { 
-                String.valueOf(temp.getID()),
+                String.valueOf(temp.getID()+1),
                 temp.getName(),
                 temp.getEstado(),
                 temp.getAC(),
@@ -425,10 +426,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel22)
                     .addComponent(cp2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(Core2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel23)
-                    .addComponent(ci2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(Core2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ci2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Core2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel21)
+                        .addComponent(jLabel23)))
                 .addGap(18, 18, 18)
                 .addGroup(Core2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tr2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -440,6 +442,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(69, 90, 100));
         jLabel10.setText("Terminal");
+
+        txtTerminal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTerminalKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTerminalLayout = new javax.swing.GroupLayout(panelTerminal);
         panelTerminal.setLayout(panelTerminalLayout);
@@ -702,9 +710,9 @@ public class Principal extends javax.swing.JFrame {
             panelDiscoDuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDiscoDuroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelDiscoDuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(porcentajeDisco))
+                .addGroup(panelDiscoDuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(porcentajeDisco, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1044,6 +1052,7 @@ public class Principal extends javax.swing.JFrame {
                 File temp = files[i];
                 compu.addFile(temp);
                 modelFiles.addRow(new Object[]{cont,temp.getName(),temp.getPath()});
+                cont++;
             }
             
             tblArchivo.setModel(modelFiles);
@@ -1139,6 +1148,25 @@ public class Principal extends javax.swing.JFrame {
             btnSiguiente.setEnabled(false);
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtTerminalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTerminalKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          compu.keyboardEnter(txtTerminal.getText());
+          txtTerminal.setText("");
+        }
+        else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+          txtTerminal.setEditable(true);
+        }else{
+            String value = txtTerminal.getText();
+            int l = value.length();
+            if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9') {
+               txtTerminal.setEditable(true);
+            } else {
+               txtTerminal.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_txtTerminalKeyPressed
 
     /**
      * @param args the command line arguments
