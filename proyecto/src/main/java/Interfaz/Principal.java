@@ -443,6 +443,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(69, 90, 100));
         jLabel10.setText("Terminal");
 
+        txtTerminal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTerminalActionPerformed(evt);
+            }
+        });
         txtTerminal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTerminalKeyPressed(evt);
@@ -1167,6 +1172,10 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtTerminalKeyPressed
+
+    private void txtTerminalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTerminalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTerminalActionPerformed
 
     /**
      * @param args the command line arguments
