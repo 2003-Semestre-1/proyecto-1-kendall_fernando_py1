@@ -5,6 +5,6 @@
 ### 2015069870 Kendall Tenorio Chévez
 ### carnet Fernando Jesus Ugalde Ugalde
 
-### Estado del proyecto: Escala de 1 a 5, 1 siendo completo y 5 deplorable
+### Estado del proyecto: 2
 ### Enlace del video: (Si esto fue solicitado)
-Recordar que el video debe ser público y con sonido para ser visto por el profesor
+https://drive.google.com/drive/folders/1JvP1n8xL31FhB7IPlwyLZ0jf8zTGma5V?usp=sharing
