@@ -300,15 +300,15 @@ public class Core {
                 break;
             case "INT":
                 if(subinst.length == 2){
-                    this.currentProcess.setEstado("wating");
+                    this.currentProcess.setEstado("esperando");
                     compu.addProcessToWait(this.currentProcess);
                     if(subinst[1].toUpperCase().equals("20H")){
                         this.countInstruction=this.instructions.size();
                     }else if(subinst[1].toUpperCase().equals("09H")){
-                        compu.sendMessagetoOutput(this.name+ " / DX: "+ this.currentProcess.getDX());
+                        compu.sendMessagetoOutput(this.name+ " / DX: ");
                         compu.sendMessagetoOutput(this.name+ " / ENTER para continuar");
                     }else if(subinst[1].toUpperCase().equals("10H")){
-                        compu.sendMessagetoOutput(this.name+ " / Ingrese un valor: ");
+                        compu.sendMessagetoOutput(this.name+ this.currentProcess.getDX());
                         this.tempDX=true;
                     }else if(subinst[1].toUpperCase().equals("21H")){
                         this.countInstruction=this.instructions.size();
@@ -322,7 +322,7 @@ public class Core {
             case "JMP":  
                 if(subinst.length == 2){
                    if(tryParseInt(subinst[1])){
-                       int jump = Integer.parseInt(subinst[1]);  ;
+                       int jump = Integer.parseInt(subinst[1]);
                        if(jump>0){
                            if(jump + this.countInstruction < this.instructions.size()){
                                this.countInstruction+=jump-1;
